@@ -133,5 +133,11 @@ export const site = {
     call: "Call 0809 019 4101",
     phone: "+2348090194101",
     cta: "Chat with us on WhatsApp",
+    /**
+     * Pre-filled WhatsApp message. The campaign code is added after it as "(Ref: code)" when the visitor came from a QR code.
+     * After the enquiry form, the follow-up button also adds the visitor's name and interest.
+     */
+    message:
+      "Hi, I came across your Halleyvine webpage and are interested. Are you available for a quick chat to share more information about it?",
   },
 };

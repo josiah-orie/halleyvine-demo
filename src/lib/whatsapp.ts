@@ -6,7 +6,7 @@ export function whatsappNumber(): string {
 }
 
 export function buildWhatsAppLink(opts: { source?: string | null; name?: string; interest?: string; number?: string } = {}): string {
-  const parts = [`Hello Halleyvine, I'd like to know more about ${site.name}.`];
+  const parts: string[] = [site.whatsapp.message];
   if (opts.name) parts.push(`My name is ${opts.name}.`);
   if (opts.interest) parts.push(`I'm interested in: ${opts.interest}.`);
   if (opts.source) parts.push(`(Ref: ${opts.source})`);

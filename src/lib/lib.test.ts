@@ -5,6 +5,7 @@ import { enquirySchema, normalizePhone } from "./schema";
 import { rateLimit, resetRateLimit } from "./rateLimit";
 import { buildEnquiryEmail, escapeHtml } from "./mail";
 import { trackEvent } from "./analytics";
+import { site } from "@/content/site";
 
 function memStorage(initial: Record<string, string> = {}) {
   const m = new Map(Object.entries(initial));
@@ -36,6 +37,10 @@ describe("whatsapp link", () => {
     const url = buildWhatsAppLink({ source: "church-a", number: "2348090194101" });
     expect(url.startsWith("https://wa.me/2348090194101?text=")).toBe(true);
     expect(decodeURIComponent(url.split("text=")[1])).toContain("(Ref: church-a)");
+  });
+  it("starts with the pre-set message from site.ts", () => {
+    const text = decodeURIComponent(buildWhatsAppLink({ source: "church-a" }).split("text=")[1]);
+    expect(text).toBe(`${site.whatsapp.message} (Ref: church-a)`);
   });
   it("omits ref when no source", () => {
     expect(decodeURIComponent(buildWhatsAppLink({}).split("text=")[1])).not.toContain("Ref:");
