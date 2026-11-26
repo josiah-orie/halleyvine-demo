@@ -1,0 +1,419 @@
+// Halleyvine theme: deep green, warm neutrals, soft gold accent.
+$hv-green: #153b2e;
+$hv-green-dark: #0e2a21;
+$hv-sand: #f6f1e9;
+$hv-stone: #e7dfd1;
+$hv-gold: #b08d57;
+$hv-ink: #1c2420;
+
+$primary: $hv-green;
+$secondary: $hv-gold;
+$body-bg: $hv-sand;
+$body-color: $hv-ink;
+$link-color: $hv-green;
+$font-family-sans-serif: var(--font-sans), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+$headings-font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+$headings-font-weight: 500;
+$border-radius: 0.75rem;
+$border-radius-lg: 1.1rem;
+$btn-border-radius: 999px;
+$btn-padding-x: 1.6rem;
+$btn-padding-y: 0.8rem;
+$input-border-radius: 0.65rem;
+$input-focus-border-color: $hv-gold;
+$input-focus-box-shadow: 0 0 0 0.2rem rgba($hv-gold, 0.25);
+$enable-shadows: false;
+
+@import "bootstrap/scss/bootstrap";
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.01em;
+}
+
+.hv-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  color: $hv-gold;
+  font-weight: 600;
+}
+
+.hv-section {
+  padding: 4rem 0;
+  @include media-breakpoint-up(md) {
+    padding: 6rem 0;
+  }
+}
+
+.hv-section--alt {
+  background: #fff;
+}
+
+.hv-section--dark {
+  background: $hv-green;
+  color: #fff;
+  .hv-eyebrow {
+    color: lighten($hv-gold, 12%);
+  }
+}
+
+.hv-title {
+  font-size: clamp(1.9rem, 5vw, 2.9rem);
+  line-height: 1.12;
+}
+
+.hv-lead {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba($hv-ink, 0.78);
+}
+
+.btn-hv {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #{$hv-green};
+  --bs-btn-border-color: #{$hv-green};
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #{$hv-green-dark};
+  --bs-btn-hover-border-color: #{$hv-green-dark};
+  --bs-btn-focus-shadow-rgb: 176, 141, 87;
+  font-weight: 600;
+}
+
+.btn-hv-gold {
+  --bs-btn-color: #{$hv-green-dark};
+  --bs-btn-bg: #{$hv-gold};
+  --bs-btn-border-color: #{$hv-gold};
+  --bs-btn-hover-color: #{$hv-green-dark};
+  --bs-btn-hover-bg: #{lighten($hv-gold, 8%)};
+  --bs-btn-hover-border-color: #{lighten($hv-gold, 8%)};
+  font-weight: 600;
+}
+
+.btn-whatsapp {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #1fa855;
+  --bs-btn-border-color: #1fa855;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #178a44;
+  --bs-btn-hover-border-color: #178a44;
+  font-weight: 600;
+}
+
+// Header
+.hv-header {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  background: rgba($hv-sand, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba($hv-green, 0.08);
+}
+
+.hv-brand {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: $hv-green;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+}
+
+.hv-logo {
+  height: 52px;
+  width: auto;
+  display: block;
+  @include media-breakpoint-up(md) {
+    height: 60px;
+  }
+}
+
+// Images
+.hv-media {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: $border-radius-lg;
+  background: $hv-stone;
+}
+
+.hv-media img {
+  object-fit: cover;
+}
+
+// Whole image visible, letterboxed on white (floor plans)
+.hv-media--contain {
+  background: #fff;
+  img {
+    object-fit: contain;
+    padding: 0.75rem;
+  }
+}
+
+.hv-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  color: rgba($hv-green, 0.7);
+  background: repeating-linear-gradient(135deg, $hv-stone, $hv-stone 14px, darken($hv-stone, 3%) 14px, darken($hv-stone, 3%) 28px);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+// Hero
+.hv-hero-media {
+  border-radius: 0;
+  aspect-ratio: 4 / 5;
+  max-height: 78vh;
+  @include media-breakpoint-up(md) {
+    aspect-ratio: 16 / 8;
+    max-height: 70vh;
+  }
+}
+
+// Hero slideshow
+.hv-gallery {
+  touch-action: pan-y;
+}
+
+.hv-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  &.is-active {
+    opacity: 1;
+  }
+  img {
+    object-fit: cover;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hv-slide {
+    transition: none;
+  }
+}
+
+.hv-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.25rem;
+  z-index: 2;
+}
+
+// 24px tap target with a smaller visible dot
+.hv-dot {
+  width: 24px;
+  height: 24px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  &::before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(#fff, 0.55);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
+    transition: width 0.3s ease, background 0.3s ease;
+  }
+  &.is-active::before {
+    width: 22px;
+    border-radius: 999px;
+    background: #fff;
+  }
+  &:focus-visible {
+    outline: 2px solid $hv-gold;
+    outline-offset: 2px;
+    border-radius: 999px;
+  }
+}
+
+.hv-hero-text {
+  padding-top: 2.5rem;
+  padding-bottom: 3.5rem;
+  text-align: center;
+}
+
+.hv-tab {
+  display: inline-block;
+  border: 1px solid $hv-green;
+  color: $hv-green;
+  border-radius: 999px;
+  padding: 0.55rem 1.4rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  &:hover,
+  &:focus-visible {
+    background: $hv-green;
+    color: #fff;
+  }
+}
+
+// Apartments
+.hv-unit-card {
+  background: #fff;
+  border: 1px solid rgba($hv-green, 0.1);
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  height: 100%;
+}
+
+.hv-plan-btn {
+  border: 0;
+  padding: 0;
+  display: block;
+  width: 100%;
+  background: none;
+  cursor: zoom-in;
+}
+
+.hv-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(10, 20, 16, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow: auto;
+}
+
+// Amenities
+.hv-amenity {
+  border-top: 2px solid $hv-gold;
+  padding-top: 1rem;
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
+// Location
+.hv-map-overlay {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  width: 42%;
+  min-width: 140px;
+  max-width: 260px;
+  aspect-ratio: 4 / 3;
+  border: 3px solid #fff;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+.hv-callout {
+  background: rgba($hv-gold, 0.14);
+  border-left: 4px solid $hv-gold;
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+}
+
+// Enquiry
+.hv-form-card {
+  background: #fff;
+  color: $hv-ink;
+  border-radius: $border-radius-lg;
+  padding: 1.5rem;
+  @include media-breakpoint-up(md) {
+    padding: 2.25rem;
+  }
+}
+
+.hv-hp {
+  position: absolute !important;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+// Floating WhatsApp
+.hv-fab {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1040;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.75rem 1.1rem;
+  background: #1fa855;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  &:hover {
+    color: #fff;
+    background: #178a44;
+  }
+}
+
+.hv-footer {
+  background: $hv-green-dark;
+  color: rgba(#fff, 0.75);
+  padding: 2.5rem 0 5.5rem;
+  font-size: 0.9rem;
+}
+
+.hv-developer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+  .hv-eyebrow {
+    color: lighten($hv-gold, 12%);
+  }
+}
+
+// Light plate so the logo's grey "REAL ESTATE LIMITED" text stays legible on the dark footer
+.hv-developer-logo {
+  display: inline-block;
+  background: $hv-sand;
+  border-radius: 0.75rem;
+  padding: 0.6rem 1rem;
+  img {
+    display: block;
+    width: 150px;
+    height: auto;
+  }
+}
+
+.hv-developer-name {
+  color: #fff;
+  font-weight: 500;
+}

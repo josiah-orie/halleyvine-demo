@@ -1,0 +1,10 @@
+node_modules
+.next
+.git
+.env
+.env.*
+!.env.example
+docs
+qr-codes
+*.md
+.DS_Store
