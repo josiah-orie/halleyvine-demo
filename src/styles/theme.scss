@@ -5,6 +5,7 @@ $hv-sand: #f6f1e9;
 $hv-stone: #e7dfd1;
 $hv-gold: #b08d57;
 $hv-ink: #1c2420;
+$hv-blue: #2a3278; // header strip, behind the Halleyvine logo
 
 $primary: $hv-green;
 $secondary: $hv-gold;
@@ -117,9 +118,11 @@ h3 {
   position: sticky;
   top: 0;
   z-index: 1030;
-  background: rgba($hv-sand, 0.92);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba($hv-green, 0.08);
+  background: $hv-blue;
+  border-bottom: 1px solid rgba(#fff, 0.08);
+  .hv-brand {
+    color: #fff; // text fallback when no logo is set
+  }
 }
 
 .hv-brand {
@@ -177,13 +180,14 @@ h3 {
 }
 
 // Hero
+// Frame matches the 4:3 hero photos on phones; on larger screens it is wider, capped at 75% of the screen height.
+// Photos inside are shown whole (see .hv-slide-fg), so the frame shape never crops them.
 .hv-hero-media {
   border-radius: 0;
-  aspect-ratio: 4 / 5;
-  max-height: 78vh;
+  aspect-ratio: 4 / 3;
   @include media-breakpoint-up(md) {
-    aspect-ratio: 16 / 8;
-    max-height: 70vh;
+    aspect-ratio: auto;
+    height: min(75vh, 56.25vw);
   }
 }
 
@@ -200,9 +204,25 @@ h3 {
   &.is-active {
     opacity: 1;
   }
+}
+
+.hv-slide-bg,
+.hv-slide-fg {
+  position: absolute;
+  inset: 0;
+}
+
+.hv-slide-bg {
+  overflow: hidden;
   img {
     object-fit: cover;
+    filter: blur(28px) brightness(0.8) saturate(1.1);
+    transform: scale(1.15); // hide the soft blurred edges
   }
+}
+
+.hv-gallery .hv-slide-fg img {
+  object-fit: contain;
 }
 
 @media (prefers-reduced-motion: reduce) {

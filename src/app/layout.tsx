@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: site.title, description: site.description },
 };
 
-export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#153b2e" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#2a3278" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;

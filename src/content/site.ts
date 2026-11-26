@@ -44,6 +44,8 @@ export const site = {
       { src: "/images/hero-6.jpg", alt: "Halleyvine Residence exterior view" },
       { src: "/images/hero-7.jpg", alt: "Halleyvine Residence exterior view" },
       { src: "/images/hero-8.jpg", alt: "Halleyvine Residence exterior view" },
+      { src: "/images/hero-9.jpg", alt: "Halleyvine Residence exterior view" },
+      { src: "/images/hero-10.jpg", alt: "Halleyvine Residence exterior view" },
     ] as { src: string; alt: string }[],
     /** Milliseconds each slide stays on screen before fading to the next. */
     intervalMs: 5000,

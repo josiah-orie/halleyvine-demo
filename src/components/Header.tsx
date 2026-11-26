@@ -13,7 +13,7 @@ export function Header() {
             site.shortName
           )}
         </a>
-        <a href="#enquiry" className="btn btn-hv btn-sm">
+        <a href="#enquiry" className="btn btn-hv-gold btn-sm">
           Enquire
         </a>
       </div>

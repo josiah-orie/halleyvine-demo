@@ -32,7 +32,7 @@ describe("sections", () => {
       { src: "/images/c.jpg", alt: "C" },
     ];
     const { container } = render(<HeroGallery images={images} intervalMs={1000} />);
-    const active = () => container.querySelector(".hv-slide.is-active img")?.getAttribute("alt");
+    const active = () => container.querySelector(".hv-slide.is-active .hv-slide-fg img")?.getAttribute("alt");
     expect(active()).toBe("A");
     act(() => vi.advanceTimersByTime(1000));
     expect(active()).toBe("B");

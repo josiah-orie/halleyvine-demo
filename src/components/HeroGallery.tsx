@@ -63,7 +63,14 @@ export function HeroGallery({ images, intervalMs = 5000 }: Props) {
           aria-label={`${i + 1} of ${count}`}
           aria-hidden={i !== index}
         >
-          <Image src={img.src} alt={img.alt} fill priority={i === 0} sizes="100vw" />
+          {/* Blurred copy fills any space around the photo. Same src and sizes, so the browser reuses one download. */}
+          <span className="hv-slide-bg" aria-hidden="true">
+            <Image src={img.src} alt="" fill priority={i === 0} sizes="100vw" />
+          </span>
+          {/* The photo itself is shown whole: never cropped, never stretched past its proportions. */}
+          <span className="hv-slide-fg">
+            <Image src={img.src} alt={img.alt} fill priority={i === 0} sizes="100vw" />
+          </span>
         </div>
       ))}
 
