@@ -38,7 +38,6 @@ export const site = {
     // To add one: save public/images/hero-3.jpg and add a line below. An empty list shows a placeholder.
     images: [
       { src: "/images/hero-1.jpg", alt: "Halleyvine Residence exterior" },
-      { src: "/images/hero-2.jpg", alt: "Halleyvine Residence exterior view" },
       { src: "/images/hero-3.jpg", alt: "Halleyvine Residence exterior view" },
       { src: "/images/hero-4.jpg", alt: "Halleyvine Residence exterior view" },
       { src: "/images/hero-5.jpg", alt: "Halleyvine Residence exterior view" },
