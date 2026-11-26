@@ -5,7 +5,7 @@ Next.js (App Router, TypeScript), Bootstrap 5 (Sass), Nodemailer (SMTP). Built a
 
 ## Deploy on Dokploy (Dockerfile build)
 1. Create an **Application** in Dokploy and connect the Git repository.
-2. Build type: **Dockerfile**, Dockerfile path `./Dockerfile`, container port `3000`.
+2. Build type: **Dockerfile**, Dockerfile path `./Dockerfile`, container port `3036` (set by `PORT` and `EXPOSE` in the Dockerfile).
 3. Add environment variables (see `.env.example`):
    - Runtime: `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS`, `SALES_TO_EMAIL`, `SALES_FROM_EMAIL`.
    - Build-time (set as build args, inlined into the client bundle): `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_WHATSAPP_NUMBER`, `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_META_PIXEL_ID`.
