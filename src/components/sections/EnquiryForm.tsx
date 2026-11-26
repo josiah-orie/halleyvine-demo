@@ -204,7 +204,8 @@ export function EnquirySection() {
           <h2 id="enquiry-title" className="hv-title">
             {site.enquiry.title}
           </h2>
-          <p className="mb-0 opacity-75">{site.enquiry.subtitle}</p>
+          <p className="hv-enquiry-subtitle mb-1">{site.enquiry.subtitle}</p>
+          <p className="hv-enquiry-note mb-0">{site.enquiry.note}</p>
         </div>
         <EnquiryForm />
       </div>

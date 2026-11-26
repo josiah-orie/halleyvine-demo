@@ -2,6 +2,8 @@ import { act, fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { Hero } from "./sections/Hero";
 import { HeroGallery } from "./HeroGallery";
+import { site } from "@/content/site";
+import { WhatsAppSection } from "./sections/WhatsAppSection";
 import { Intro } from "./sections/Intro";
 import { Apartments } from "./sections/Apartments";
 import { Location } from "./sections/Location";
@@ -16,13 +18,17 @@ describe("sections", () => {
     expect(screen.getByText("Enquire")).toBeInTheDocument();
     expect(screen.getByText(/All rights reserved/)).toBeInTheDocument();
     expect(screen.getByText("Developed by")).toBeInTheDocument();
-    expect(screen.getByText("Chateau Royal Real Estate Limited")).toBeInTheDocument();
-    expect(screen.getByAltText("Chateau Royal Real Estate Limited")).toBeInTheDocument();
+    expect(screen.getByText(site.developer.name)).toBeInTheDocument();
+    expect(screen.getByAltText(site.developer.name)).toBeInTheDocument();
+  });
+  it("renders the WhatsApp section with a tap-to-call line", () => {
+    render(<SourceProvider><WhatsAppSection /></SourceProvider>);
+    expect(screen.getByText(site.whatsapp.call)).toHaveAttribute("href", `tel:${site.whatsapp.phone}`);
   });
   it("renders hero headline and CTA", () => {
     render(<Hero />);
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("A new way to live in Sangotedo.");
-    expect(screen.getByText("Explore Halleyvine")).toHaveAttribute("href", "#introduction");
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(site.headline);
+    expect(screen.getByText(site.hero.cta)).toHaveAttribute("href", "#introduction");
   });
   it("hero gallery auto-advances and responds to dots", () => {
     vi.useFakeTimers();
@@ -48,12 +54,12 @@ describe("sections", () => {
   });
   it("renders the intro title", () => {
     render(<Intro />);
-    expect(screen.getByText("A home for your next chapter")).toBeInTheDocument();
+    expect(screen.getByText(site.intro.title)).toBeInTheDocument();
   });
   it("opens and closes the floor plan dialog", () => {
     render(<SourceProvider><Apartments /></SourceProvider>);
-    expect(screen.getByText("Two-bedroom apartment")).toBeInTheDocument();
-    expect(screen.getByText("Three-bedroom apartment")).toBeInTheDocument();
+    expect(screen.getByText(site.apartments.units[0].name)).toBeInTheDocument();
+    expect(screen.getByText(site.apartments.units[1].name)).toBeInTheDocument();
     fireEvent.click(screen.getAllByText("View floor plan")[0]);
     expect(screen.getByRole("dialog")).toBeInTheDocument();
     fireEvent.click(screen.getByLabelText("Close floor plan"));
@@ -61,7 +67,7 @@ describe("sections", () => {
   });
   it("shows the coastal road call-out and a lazy map", () => {
     render(<Location />);
-    expect(screen.getByText("Close to the coastal road")).toBeInTheDocument();
+    expect(screen.getByText(site.location.coastalCallout.title.trim())).toBeInTheDocument();
     expect(screen.getByTitle(/Map showing/)).toHaveAttribute("loading", "lazy");
   });
 });

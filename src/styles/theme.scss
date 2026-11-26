@@ -361,7 +361,18 @@ h3 {
   padding: 1rem 1.25rem;
 }
 
-// Enquiry
+// Enquiry: text steps down in size from the title, to the subtitle, to the note
+.hv-enquiry-subtitle {
+  font-size: 1.15rem;
+  opacity: 0.85;
+  text-wrap: balance; // avoid a single word left alone on the last line
+}
+
+.hv-enquiry-note {
+  font-size: 0.9rem;
+  opacity: 0.65;
+}
+
 .hv-form-card {
   background: #fff;
   color: $hv-ink;
@@ -399,6 +410,16 @@ h3 {
   &:hover {
     color: #fff;
     background: #178a44;
+  }
+}
+
+.hv-call-link {
+  color: $hv-green;
+  font-weight: 600;
+  text-decoration: none;
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
   }
 }
 

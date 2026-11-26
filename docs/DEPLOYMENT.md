@@ -39,7 +39,7 @@ Images are `null` in `src/content/site.ts` until a file exists, and the page sho
 | Checked | Section (placeholder label) | Save file as | Set in `site.ts` | Suggested size |
 |---|---|---|---|---|
 | [x] | Hero slideshow (`hero-1.jpg` and `hero-2.jpg` added) | `public/images/hero-1.jpg`, `hero-2.jpg`, `hero-3.jpg`, ... in display order | add `{ src: "/images/hero-3.jpg", alt: "..." }` to `hero.images` | 2400 x 1500, landscape, subject centred (cropped to portrait on phones) |
-| [ ] | Introduction ("Introduction image") | `public/images/intro.jpg` | `intro.image: "/images/intro.jpg"` | 1920 x 1080 (16:9) |
+| [x] | Introduction (added) | `public/images/intro.jpg` | `intro.image: { src: "/images/intro.jpg", width: 2400, height: 1792 }`; update width/height if you replace the file | Any shape; shown whole (not cropped). About 2400 px wide |
 | [x] | Two-bedroom floor plan (added) | `public/plans/two-bed.jpg` | `apartments.units[0].floorPlan: { src: "/plans/two-bed.jpg", width: 2276, height: 1280 }` | Any shape; shown whole (not cropped). White background, about 2400 to 2800 px wide so labels stay readable when enlarged |
 | [x] | Three-bedroom floor plan (added) | `public/plans/three-bed.jpg` | `apartments.units[1].floorPlan: { src: "/plans/three-bed.jpg", width: 2800, height: 1340 }` | Same as above |
 | [ ] | Living experience ("Living experience image") | `public/images/living.jpg` | `living.image: "/images/living.jpg"` | 1920 x 1080 (16:9) |
