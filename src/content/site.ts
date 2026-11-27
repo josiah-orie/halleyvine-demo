@@ -17,6 +17,9 @@ export type InterestValue = (typeof INTEREST_OPTIONS)[number]["value"];
 export type ImageAsset = { src: string; width: number; height: number };
 export type FloorPlan = ImageAsset;
 
+/** One card in "More than just an apartment". */
+export type Amenity = { title: string; text?: string; intro?: string; items?: string[] };
+
 export const site = {
   name: "Halleyvine Residence – Off Lagos-Calabar Coastal road",
   shortName: "Halleyvine",
@@ -97,13 +100,32 @@ export const site = {
     image: "/images/living.jpg" as string | null, // PLACEHOLDER: "/images/living.jpg"
     imageAlt: "Halleyvine Residence lifestyle and amenities",
     intro: "A residential experience built around comfort, convenience and modern living.",
-    // PLACEHOLDER: replace with the CONFIRMED amenities list only.
+    // Each card has a title, then any of: `text` (a sentence), `intro` (a lead-in line) and `items` (a bulleted list).
     amenities: [
       { title: "Contemporary layouts", text: "Apartments planned for comfortable everyday living." },
-      { title: "Lifestyle amenities", text: "Gated access with CCTV Surveillance Solar powered perimeter lighting Club house comprising of a concierge, Gym, mini mart, pharmacare, estate facility office, café" },
-      { title: "Convenient location", text: "In the developing community of Sangotedo. Fast-growing environment. 25mins to VI (Eko Hotel), family centric environment with the Novare mall about 5mins away" },
+      {
+        title: "Lifestyle amenities",
+        items: [
+          "Gated access with CCTV surveillance",
+          "Solar-powered perimeter lighting",
+          "A clubhouse with a concierge, gym, mini mart, pharmacare, estate facility office and café",
+        ],
+      },
+      {
+        title: "Convenient location",
+        intro: "With light traffic, drive time estimates are:",
+        items: [
+          "25 mins to VI (Eko Hotel)",
+          "8 mins to Novare Mall",
+          "20 mins to Ziba Beach Resort",
+          "12 mins to Giwa Gardens Resort",
+          "10 mins to Sangotedo Market",
+          "15 mins to Lagos Business School",
+          "9 mins to Lufasi Park",
+        ],
+      },
       { title: "Ownership options", text: "1, 2 & 3-bed apartments with 4-bed semi-detached with 1room BQ Eligible for mortgage purchases too" },
-    ],
+    ] as Amenity[],
   },
 
   location: {
@@ -112,7 +134,9 @@ export const site = {
     imageAlt: "Novare Mall, Sangotedo",
     // PLACEHOLDER: replace with the exact project coordinates / address.
     mapQuery: "Sangotedo, Lagos, Nigeria",
-    text: "Halleyvine is strategically positioned to sit right in the middle of Sangotedo; and being halfway to the bustling city life constantly developing there and to the Lagos-Calabar coastal road, with an escape back into VI or out of town for a weekend trip.",
+    text: "The Halleyvine Residences' strategic positioning in Sangotedo, puts it at a halfway point between  the bustling city life constantly developing along the Lekki-Epe expressway and to the just completed Lagos-Calabar coastal road. " +
+        "Other notable landmarks within a 6km radius (estimated 20min drive) include Ziba Resort, Giwa Gardens Resort, Lagos Business School, Sangotedo market and the Lufasi Natural Park to name a few. Despite being constantly overlooked as a location of good value, " +
+        "Sangotedo has over the past decade, still grown by a 3x value appreciation higher than Lekki 1.",
     // PLACEHOLDER: add the verified distance/drive time to the Lekki-Epe Expressway and the coastal road.
     coastalCallout: {
       title: "Constantly over looked as a location of value, ",

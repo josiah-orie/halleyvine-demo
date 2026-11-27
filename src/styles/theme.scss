@@ -1,17 +1,18 @@
-// Halleyvine theme: deep green, warm neutrals, soft gold accent.
-$hv-green: #153b2e;
-$hv-green-dark: #0e2a21;
+// Halleyvine theme: deep blue, warm neutrals, gold accents, logo yellow for buttons.
+// Green is used only for the WhatsApp buttons (WhatsApp's own brand colour).
+$hv-blue: #2a3278; // main brand colour: header, buttons, links, enquiry section
+$hv-blue-dark: #1d2357; // hover states and footer
 $hv-sand: #f6f1e9;
 $hv-stone: #e7dfd1;
-$hv-gold: #b08d57;
+$hv-gold: #b08d57; // small accents: labels, divider lines, call-out border
+$hv-yellow: #f4ac0c; // the yellow in the Halleyvine logo, used for the yellow button
 $hv-ink: #1c2420;
-$hv-blue: #2a3278; // header strip, behind the Halleyvine logo
 
-$primary: $hv-green;
+$primary: $hv-blue;
 $secondary: $hv-gold;
 $body-bg: $hv-sand;
 $body-color: $hv-ink;
-$link-color: $hv-green;
+$link-color: $hv-blue;
 $font-family-sans-serif: var(--font-sans), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 $headings-font-family: var(--font-serif), Georgia, "Times New Roman", serif;
 $headings-font-weight: 500;
@@ -64,7 +65,7 @@ h3 {
 }
 
 .hv-section--dark {
-  background: $hv-green;
+  background: $hv-blue;
   color: #fff;
   .hv-eyebrow {
     color: lighten($hv-gold, 12%);
@@ -84,22 +85,25 @@ h3 {
 
 .btn-hv {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #{$hv-green};
-  --bs-btn-border-color: #{$hv-green};
+  --bs-btn-bg: #{$hv-blue};
+  --bs-btn-border-color: #{$hv-blue};
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #{$hv-green-dark};
-  --bs-btn-hover-border-color: #{$hv-green-dark};
+  --bs-btn-hover-bg: #{$hv-blue-dark};
+  --bs-btn-hover-border-color: #{$hv-blue-dark};
   --bs-btn-focus-shadow-rgb: 176, 141, 87;
   font-weight: 600;
 }
 
+// Logo-yellow button (header "Enquire")
 .btn-hv-gold {
-  --bs-btn-color: #{$hv-green-dark};
-  --bs-btn-bg: #{$hv-gold};
-  --bs-btn-border-color: #{$hv-gold};
-  --bs-btn-hover-color: #{$hv-green-dark};
-  --bs-btn-hover-bg: #{lighten($hv-gold, 8%)};
-  --bs-btn-hover-border-color: #{lighten($hv-gold, 8%)};
+  --bs-btn-color: #{$hv-blue-dark};
+  --bs-btn-bg: #{$hv-yellow};
+  --bs-btn-border-color: #{$hv-yellow};
+  --bs-btn-hover-color: #{$hv-blue-dark};
+  --bs-btn-hover-bg: #{lighten($hv-yellow, 8%)};
+  --bs-btn-hover-border-color: #{lighten($hv-yellow, 8%)};
+  --bs-btn-active-bg: #{darken($hv-yellow, 5%)};
+  --bs-btn-active-border-color: #{darken($hv-yellow, 5%)};
   font-weight: 600;
 }
 
@@ -129,7 +133,7 @@ h3 {
   font-family: var(--font-serif), Georgia, serif;
   font-size: 1.35rem;
   font-weight: 600;
-  color: $hv-green;
+  color: $hv-blue;
   text-decoration: none;
   letter-spacing: 0.02em;
   display: inline-flex;
@@ -173,7 +177,7 @@ h3 {
   justify-content: center;
   text-align: center;
   padding: 1rem;
-  color: rgba($hv-green, 0.7);
+  color: rgba($hv-blue, 0.7);
   background: repeating-linear-gradient(135deg, $hv-stone, $hv-stone 14px, darken($hv-stone, 3%) 14px, darken($hv-stone, 3%) 28px);
   font-size: 0.85rem;
   letter-spacing: 0.04em;
@@ -280,8 +284,8 @@ h3 {
 
 .hv-tab {
   display: inline-block;
-  border: 1px solid $hv-green;
-  color: $hv-green;
+  border: 1px solid $hv-blue;
+  color: $hv-blue;
   border-radius: 999px;
   padding: 0.55rem 1.4rem;
   text-decoration: none;
@@ -289,7 +293,7 @@ h3 {
   font-size: 0.95rem;
   &:hover,
   &:focus-visible {
-    background: $hv-green;
+    background: $hv-blue;
     color: #fff;
   }
 }
@@ -297,7 +301,7 @@ h3 {
 // Apartments
 .hv-unit-card {
   background: #fff;
-  border: 1px solid rgba($hv-green, 0.1);
+  border: 1px solid rgba($hv-blue, 0.1);
   border-radius: $border-radius-lg;
   overflow: hidden;
   height: 100%;
@@ -330,6 +334,27 @@ h3 {
   padding-top: 1rem;
   h3 {
     font-size: 1.25rem;
+  }
+}
+
+.hv-amenity-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  li {
+    position: relative;
+    padding-left: 1.1rem;
+    margin-bottom: 0.35rem;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0.15rem;
+      top: 0.6em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: $hv-gold;
+    }
   }
 }
 
@@ -414,7 +439,7 @@ h3 {
 }
 
 .hv-call-link {
-  color: $hv-green;
+  color: $hv-blue;
   font-weight: 600;
   text-decoration: none;
   &:hover,
@@ -424,7 +449,7 @@ h3 {
 }
 
 .hv-footer {
-  background: $hv-green-dark;
+  background: $hv-blue-dark;
   color: rgba(#fff, 0.75);
   padding: 2.5rem 0 5.5rem;
   font-size: 0.9rem;

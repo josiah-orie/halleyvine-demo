@@ -20,7 +20,15 @@ export function Living() {
             <div key={a.title} className="col-12 col-sm-6 col-lg-3">
               <div className="hv-amenity">
                 <h3>{a.title}</h3>
-                <p className="mb-0 text-body-secondary">{a.text}</p>
+                {a.text && <p className="mb-0 text-body-secondary">{a.text}</p>}
+                {a.intro && <p className="mb-2 text-body-secondary">{a.intro}</p>}
+                {a.items && a.items.length > 0 && (
+                  <ul className="hv-amenity-list text-body-secondary">
+                    {a.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
           ))}

@@ -4,6 +4,7 @@ import { Hero } from "./sections/Hero";
 import { HeroGallery } from "./HeroGallery";
 import { site } from "@/content/site";
 import { WhatsAppSection } from "./sections/WhatsAppSection";
+import { Living } from "./sections/Living";
 import { Intro } from "./sections/Intro";
 import { Apartments } from "./sections/Apartments";
 import { Location } from "./sections/Location";
@@ -51,6 +52,14 @@ describe("sections", () => {
   it("hero gallery hides dots for a single image", () => {
     render(<HeroGallery images={[{ src: "/images/a.jpg", alt: "A" }]} />);
     expect(screen.queryByLabelText(/Show photo/)).not.toBeInTheDocument();
+  });
+  it("renders amenity cards with bulleted lists", () => {
+    render(<Living />);
+    for (const a of site.living.amenities) {
+      expect(screen.getByText(a.title)).toBeInTheDocument();
+      if (a.intro) expect(screen.getByText(a.intro)).toBeInTheDocument();
+      for (const item of a.items ?? []) expect(screen.getByText(item).tagName).toBe("LI");
+    }
   });
   it("renders the intro title", () => {
     render(<Intro />);
